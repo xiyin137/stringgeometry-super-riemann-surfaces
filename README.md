@@ -35,8 +35,10 @@ SGSuperRiemannSurfaces -> SGSupermanifolds, SGRiemannSurfaces
 
 ### Entry point
 
+- `StringGeometry/SuperRiemannSurfaces.lean`
+  - package-level entry point for the super Riemann surfaces library.
 - `StringGeometry/SuperRiemannSurfaces/SuperRiemannSurfaces.lean`
-  - umbrella import for the module stack above.
+  - umbrella import for core SRS modules.
 
 ## Build
 
@@ -44,6 +46,23 @@ SGSuperRiemannSurfaces -> SGSupermanifolds, SGRiemannSurfaces
 lake update
 lake build
 ```
+
+## Quality Gate
+
+Run the local quality guard before pushing:
+
+```bash
+./scripts/check_super_riemann_quality.sh
+```
+
+This script enforces:
+
+1. no non-allowlisted `sorry` in `StringGeometry/SuperRiemannSurfaces`
+2. targeted module compilation for the super Riemann surface stack
+
+Allowlisted in-progress files are tracked in:
+
+- `StringGeometry/SuperRiemannSurfaces/sorry_allowlist.txt`
 
 ## Dependency Wiring
 

@@ -64,6 +64,8 @@ namespace Supermanifolds
 
 open RiemannSurfaces RiemannSurfaces.Moduli Parity
 
+universe u v
+
 /-!
 ## The Supermoduli Space as a Supermanifold
 
@@ -84,7 +86,7 @@ structure SuperModuliSpaceData (g nNS : ℕ) where
   /-- The odd dimension of the supermoduli space (to be proven = 2g-2+n) -/
   dimOdd : ℕ
   /-- The supermoduli space is a supermanifold with the given dimensions -/
-  supermanifold : Supermanifold ⟨dimEven, dimOdd⟩
+  supermanifold : Supermanifold.{0, u, v} ⟨dimEven, dimOdd⟩
   /-- The ordinary moduli space M_g that the body projects to -/
   moduliSpace : ModuliSpace g
   /-- The body (reduced space) maps to the set of points of the ordinary moduli space M_g.
@@ -384,7 +386,7 @@ structure SuperModuliSpaceDataFull (g nNS nR : ℕ) where
   /-- The odd dimension of the supermoduli space (to be proven = 2g-2+nNS+nR/2) -/
   dimOdd : ℕ
   /-- The underlying supermanifold structure with the given dimensions -/
-  supermanifold : Supermanifold ⟨dimEven, dimOdd⟩
+  supermanifold : Supermanifold.{0, u, v} ⟨dimEven, dimOdd⟩
   /-- The ordinary pointed moduli space M_{g, nNS + nR} that the body projects to -/
   moduliSpacePointed : ModuliSpacePointed g (nNS + nR)
   /-- Projection to ordinary moduli -/

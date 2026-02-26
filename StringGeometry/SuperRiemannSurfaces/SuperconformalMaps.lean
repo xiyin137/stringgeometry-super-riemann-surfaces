@@ -609,7 +609,7 @@ structure SuperWittGeneratorG (Λ : GrassmannAlgebra ℂ) (r : ℤ)
   /-- G_r has χ(z) = z^{r+1/2} (for NS sector r ∈ ℤ + 1/2) -/
   is_Gr : True
   /-- The fermionic sector: NS (r ∈ ℤ + 1/2) or R (r ∈ ℤ) -/
-  sector : SpinStructure
+  sector : FermionSector
 
 /-- The super Witt algebra commutation relations -/
 structure SuperWittRelations where

@@ -73,6 +73,8 @@ where f is holomorphic and the superconformal constraint requires f' = η².
 
 namespace Supermanifolds
 
+universe u v
+
 /-!
 ## Complex Super Vector Spaces and Algebras
 
@@ -365,7 +367,8 @@ structure DistributionRestriction (SRS : SuperRiemannSurface)
     [T2Space SRS.body] [SecondCountableTopology SRS.body]
     [ConnectedSpace SRS.body] [CompactSpace SRS.body] where
   /-- The restriction D|_{Σ_red} as a line bundle on the reduced surface -/
-  lineBundle : RiemannSurfaces.HolomorphicLineBundle SRS.reducedSurface.toRiemannSurface
+  lineBundle : RiemannSurfaces.HolomorphicLineBundle.{u, v}
+    SRS.reducedSurface.toRiemannSurface
   /-- D|_{Σ_red} ⊗ D|_{Σ_red} ≅ T (the tangent bundle) -/
   squareIsTangent : True
   /-- The dual (D|_{Σ_red})* is the spin bundle K^{1/2} -/
@@ -388,7 +391,8 @@ structure SplitSuperRiemannSurface where
   /-- The underlying Riemann surface -/
   reducedSurface : RiemannSurfaces.CompactRiemannSurface
   /-- The spin structure on the reduced surface -/
-  spinStructure : RiemannSurfaces.SpinStructure reducedSurface.toRiemannSurface
+  spinStructure : RiemannSurfaces.SpinStructure.{u, v}
+    reducedSurface.toRiemannSurface
   /-- The structure sheaf is O_Σ ⊕ S* -/
   isSplit : True
 
@@ -433,13 +437,19 @@ Infinitesimal superconformal transformations form the super Virasoro algebra.
     - [L_m, G_r] = (m/2 - r) G_{m+r}
     - {G_r, G_s} = 2 L_{r+s} + (c/3)(r² - 1/4) δ_{r+s,0}
 
-    The representation as differential operators on superspace uses GrassmannAlgebra
-    (see InfinitesimalSuperconformal in SuperconformalMaps.lean). -/
+   The representation as differential operators on superspace uses GrassmannAlgebra
+   (see InfinitesimalSuperconformal in SuperconformalMaps.lean). -/
+inductive SuperVirasoroSector
+  | neveuSchwarz
+  | ramond
+  deriving DecidableEq, Repr
+
+/-- Abstract data for the super Virasoro algebra. -/
 structure SuperVirasoroAlgebra where
   /-- Central charge -/
   centralCharge : ℂ
   /-- The sector: NS (r ∈ ℤ + 1/2) or R (r ∈ ℤ) -/
-  sector : SpinStructure
+  sector : SuperVirasoroSector
   /-- Even generators L_n for n ∈ ℤ (abstract basis elements) -/
   L_generators : ℤ → Type*
   /-- Odd generators G_r indexed by ℝ (r ∈ ℤ for R, r ∈ ℤ+1/2 for NS, general for spectral flow) -/
