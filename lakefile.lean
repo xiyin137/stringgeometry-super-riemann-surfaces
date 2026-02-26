@@ -7,9 +7,9 @@ require mathlib from git
   "https://github.com/leanprover-community/mathlib4.git" @ "master"
 
 require SGSupermanifolds from git
-  "https://github.com/xiyin137/stringgeometry-supermanifolds.git" @ "main"
+  "https://github.com/xiyin137/stringgeometry-supermanifolds.git" @ "4d48fb0"
 
 require SGRiemannSurfaces from git
-  "https://github.com/xiyin137/stringgeometry-riemann-surfaces.git" @ "main"
+  "https://github.com/xiyin137/stringgeometry-riemann-surfaces.git" @ "ab1b034"
 lean_lib SGSuperRiemannSurfaces where
   roots := #[`StringGeometry.SuperRiemannSurfaces.SuperRiemannSurfaces]

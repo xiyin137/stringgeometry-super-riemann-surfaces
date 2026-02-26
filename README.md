@@ -52,8 +52,8 @@ lake build
 - `SGSupermanifolds` from `xiyin137/stringgeometry-supermanifolds`
 - `SGRiemannSurfaces` from `xiyin137/stringgeometry-riemann-surfaces`
 
-Current dependency refs are branch-based (`main`), so updating foundational
-repos may change downstream behavior immediately.
+Dependencies are commit-pinned for reproducible builds; update pins explicitly
+when adopting newer foundation revisions.
 
 ## Development Status
 
